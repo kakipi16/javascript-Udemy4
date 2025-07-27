@@ -16,8 +16,19 @@ class Person {
 
   hello() {
       console.log('hello ' + this.name);
+      return this;
   }
 }
 
 const bob = new Person('Bob', 23);
-setTimeout(bob.hello, 1000);
+//解答
+//OK
+// setTimeout(bob.hello.bind(bob), 1000);
+
+// setTimeout(bob.hello.call(bob), 1000);
+
+//答え
+//コールバック関数とthisを見よう
+setTimeout(function() {
+  bob.hello()
+} , 1000);
